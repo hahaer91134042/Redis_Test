@@ -25,7 +25,7 @@ namespace Redis_Test.Controllers.Api
             {
                 msg = "Success Hill",
                 value=redis.GetString("runoob"),
-                db=db.Game11s
+                db=db.Products
             };
         }
 
@@ -45,14 +45,14 @@ namespace Redis_Test.Controllers.Api
         [Route("AddItem")]
         public object AddItem([FromForm] int num)
         {
-            var initNum=(from g in db.Game11s
+            var initNum=(from g in db.Products
                          orderby g.Id descending
                          select g).First().Id;
 
             for (int i = 0; i < num; i++)
             {
                 var j=initNum + i + 1;
-                db.Game11s.Add(new Game11
+                db.Products.Add(new Product
                 {
                     Name = "商品_" + (j),
                     Time = DateTime.Now.AddSeconds(j),

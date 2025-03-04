@@ -18,7 +18,8 @@ builder.Services.AddSingleton(redis);
 //builder.Services.AddScoped<MyRedis>();
 builder.Services.AddDbContext<TestDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DB"));
+    //options.UseSqlServer(builder.Configuration.GetConnectionString("DB"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("PG"));
 }, ServiceLifetime.Scoped);
 
 var app = builder.Build();
@@ -40,7 +41,7 @@ using (var scope = app.Services.CreateScope())
     // 檢查資料庫是否已建立
     context.Database.EnsureCreated();
 
-    if (context.Game11s.Any())
+    if (context.Products.Any())
     {
         
     }

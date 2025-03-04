@@ -2,7 +2,7 @@
 
 namespace Redis_Test.Models.DB
 {
-    public class Game11
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -12,7 +12,7 @@ namespace Redis_Test.Models.DB
     {
 
 
-        public DbSet<Game11> Game11s { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         public TestDbContext(DbContextOptions<TestDbContext> options) : base(options)
         {
@@ -20,7 +20,7 @@ namespace Redis_Test.Models.DB
 
         override protected void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Game11>().ToTable("Game11");
+            modelBuilder.Entity<Product>().ToTable("Product");
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
